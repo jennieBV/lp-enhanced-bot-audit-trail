@@ -7,17 +7,16 @@ A simple web tool to help you upload and read Conversation Builder bot change hi
 ## 📸 Demo
 
 <!-- Drag and drop your app screenshot here! Name it demo_screenshot.png and place it in the src/ folder -->
-![App Screenshot](src/demo_screenshot.png)
+<img width="1683" height="919" alt="Screenshot 2026-07-14 at 23 54 32" src="https://github.com/user-attachments/assets/d1602a81-8136-4e40-9134-2f24fb31a3bb" />
+
 
 ---
 
 ## Features
 
 - **Upload Logs:** Just drag and drop your exported bot history sheet (CSV or TXT logs) or paste raw log lines directly.
-- **Bot Name:** Automatically extracts the bot name from the logs and shows it at the top of your timeline.
 - **Visual Diffs:** Shows side-by-side before and after comparisons for modified interaction elements.
 - **Quick Filters:** Filter logs easily by author, action (Created, Updated, Deleted), or search by custom keywords.
-- **100% Local:** No logins, databases, or credentials required. Everything runs locally inside your browser.
 
 ---
 
