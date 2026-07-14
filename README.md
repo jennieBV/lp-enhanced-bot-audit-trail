@@ -1,61 +1,64 @@
-# CB-Audit: LivePerson Audit Trail Explorer
+# LivePerson Enhanced Bot Audit Trail
 
-CB-Audit is a beautiful, secure internal dashboard designed for LivePerson employees to query, parse, and visualize chatbot configurations and interaction updates directly from Elasticsearch logs.
+A beautiful, high-fidelity, and secure React web application designed to parse, cascade-filter, and visually inspect Conversation Builder chatbot change histories and audit trails directly from log sheets (CSV/TXT).
+
+---
+
+## 📸 Application Preview
+
+<p align="center">
+  <!-- Replace src/demo_screenshot.png with your actual screenshot! -->
+  <img src="src/demo_screenshot.png" alt="LivePerson Enhanced Bot Audit Trail UI Dashboard" width="100%" style="border-radius: 12px; border: 1px solid rgba(255, 90, 0, 0.2); box-shadow: 0 10px 40px rgba(0,0,0,0.3);" />
+</p>
+
+> 💡 **Tip:** *To display your custom screenshot above, simply name your image file `demo_screenshot.png` and save it under the `src/` directory, or update the image `src` path above!*
 
 ---
 
 ## ✨ Features
 
-- **🔐 Google OAuth Integration:** Secured Gmail/LivePerson sign-in prevents unauthorized access to internal systems.
-- **⚡ CSDS Account-to-Env Resolution:** Checks the environment (`US Production`, `EU Production`, `APAC Production`, or `QA/Sandbox`) of any LivePerson Account ID dynamically and targets the corresponding Elasticsearch cluster data views automatically.
-- **⚙️ Structured Log Parsing Engine:** Seamlessly processes nested, raw console logs matching:
-  `[AuditTrail] Pushed audit event with id: ... to redis queue for processing: AuditEvent(...)`
-  and breaks them down into interactive timeline events.
-- **🎨 Interactive Timeline & Diffing:** Deeply nested elements and fields are parsed and presented in side-by-side visual code diffs (Old vs. New values) with customizable highlight colors.
-- **📋 Pasted Log Utility:** Paste a single raw `[AuditTrail]` log directly into the UI to inspect its modified elements instantly on-the-fly.
-- **📥 Audit Export:** One-click download of parsed logs as fully structured JSON audits.
+- **📁 Frictionless Log Uploads:** Drag and drop your raw exported log sheets (CSV or standard console TXT outputs) for instant loading.
+- **🤖 Automatic Bot Name Extraction:** The parser dynamically extracts the name of the active bot (`parentObjectName`) from log strings and customizes the workspace headers.
+- **🎨 Premium Aurora Glassmorphic UI:** High-contrast floating glass cards featuring dynamic, slow-motion background aurora light-fields and glowing hover indicator shadows.
+- **🛡️ Secure Client-Side Execution:** Zero database, OAuth logins, or external cloud requests required. All log parsing occurs 100% locally within your secure web browser.
+- **📊 Interactive Timeline & Code Diffing:** Clearly visualizes deleted, updated, or created elements with color-coded tags and side-by-side Before and After diff comparisons.
+- **🔍 Cascade Slicing Filters:** Instantly slice the parsed trail by specific authors, interaction objects, activity types, or custom keywords.
+- **📋 Raw Paste Utility:** Quickly paste a single or multiple raw `AuditEvent` logs directly into the textbox to inspect modifications immediately.
+- **📥 Audit Export:** One-click JSON download of all parsed audit logs for persistent record-keeping.
 
 ---
 
-## 🛠️ Configuration & Getting Started
+## 🚀 Getting Started
 
-### 1. Requirements
-Ensure you have **Node.js (v18+)** installed.
-
-### 2. Environment Variables (`.env`)
-Create a `.env` file in the root of the project to configure production variables:
-```env
-# Server Details
-PORT=3001
-SESSION_SECRET=a_super_secure_random_hash_string
-
-# Google OAuth Credentials
-GOOGLE_CLIENT_ID=your-google-oauth-client-id.apps.googleusercontent.com
-GOOGLE_CLIENT_SECRET=your-google-oauth-client-secret
-
-# (Optional) Elasticsearch Cluster Configuration
-ELASTIC_URL=https://your-production-es-endpoint:9200
-ELASTIC_API_KEY=your-secure-es-api-token
-```
-*Note: If no Google credentials or Elasticsearch values are supplied, the application automatically launches in **Developer Sandbox Mode**, permitting password-free Gmail bypass and serving dynamic high-fidelity simulated audit logs for instant local evaluations.*
-
-### 3. Installation
-Install the project dependencies:
+### 1. Installation
+Install the project dependencies locally:
 ```bash
 npm install
 ```
 
-### 4. Running the App
-Launch both the Express backend server and the Vite React frontend concurrently with a single command:
+### 2. Launch the Web Application
+Start the fast local development server:
 ```bash
 npm run dev
 ```
+
+### 3. Open in Browser
 Open **[http://localhost:3000](http://localhost:3000)** in your browser to experience the application!
 
 ---
 
-## 🧪 Running Verification Tests
-Run the standalone parser validator to assert regex correctness against standard LP audit logs:
-```bash
-node test-parser.js
+## 📂 Project Structure
+
+```
+├── src/
+│   ├── components/
+│   │   ├── DiffViewer.jsx   # Side-by-side code diffing render
+│   │   └── Timeline.jsx     # Renders the audit timeline cards
+│   ├── App.jsx              # Main layout & file parsing state
+│   ├── App.css              # Glassmorphic and animated aurora design tokens
+│   ├── main.jsx             # React entry mount
+│   └── lp-logo.png          # Official LivePerson gear asset
+├── index.html               # Main page index
+├── package.json             # Core dependency registry
+└── vite.config.js           # Vite development server settings
 ```
